@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+<head>
+    {% load static %}
+</head>
+
+{% block content %}
+    <div class="index_container">
+        <header>
+            <h1 class="post_recent">Последние посты:</h1>
+        <header>
+
+        <main>
+            {% for post in post_list %}
+                <article class="post_container">
+                    <div class="post_title"><a href="{% url 'detail' pk=post.pk %}">{{ post.title }}</a></div>
+                    <time class="post_date">Опубликовано: {{ post.pub_date }}</time>
+                    <pre class="post_text">{{ post.text|safe }}</pre>
+                </article>
+            {% endfor %}
+        </main>
+    </div>
+{% endblock %}

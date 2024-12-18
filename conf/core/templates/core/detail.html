@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+<head>
+    {% load static %}
+</head>
+
+{% block content %}
+    <article class="post_container_detail">
+        <div class="detail_categories">
+            <div class="detail_categories_title">Категории:</div>
+            <ul class="detail_categories_list">
+                {% for category in post.categories.all %}
+                    <li>
+                        {{ category.title }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="post_info_detail">
+            <div><time class="post_date_detail">Опубликовано: {{ post.pub_date }}</time></div>
+            <div class="post_title_detail">{{ post.title }}</div>
+            <div><pre class="post_text_detail">{{ post.text|safe }}</pre></div>
+        </div>
+    </article>
+{% endblock %}

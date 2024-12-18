@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Otkachka Govna</title>
+
+        {% load static %}
+
+        <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    </head>
+
+    <body>
+        <header>
+            <div class="base_header">
+                <div class="base_nav1">
+                    <div class="base_title">
+                        <a href="{% url 'index' %}">♡ Откачка говна ♡</a>
+                    </div>
+
+                    <div>
+                        <a href="{% url 'about' %}">О сайте</a> 
+                    </div>
+                </div>
+
+                <nav class="base_nav2">
+                    <ul class="base_categories">
+                        {% for category in categories_list %}
+                            <li>
+                                <a href="{% url 'category' pk=category.pk %}">
+                                    {{ category.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>
